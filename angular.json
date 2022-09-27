@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-mrh-timepicker": {
+      "projectType": "library",
+      "root": "projects/ngx-mrh-timepicker",
+      "sourceRoot": "projects/ngx-mrh-timepicker/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-mrh-timepicker/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-mrh-timepicker/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-mrh-timepicker/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-mrh-timepicker/src/test.ts",
+            "tsConfig": "projects/ngx-mrh-timepicker/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-mrh-timepicker/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-mrh-timepicker"
+}
