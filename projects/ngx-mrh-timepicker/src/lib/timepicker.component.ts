@@ -158,11 +158,10 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
     scrollToValue(value: string) {
         const timeSelectElm = this.elm.nativeElement.querySelector('.time-select');
         if (timeSelectElm) {
-            console.log(value);
             let [h, m] = value.split(':');
             let n = parseInt(h, 10) * 60;
             if (m) n +=  + parseInt(m, 10);
-            let scrollPercent = n / (24 * 60);       
+            let scrollPercent = n / (24 * 60);
             timeSelectElm.scrollTop = timeSelectElm.scrollHeight * scrollPercent;
         }
     }
