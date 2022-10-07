@@ -1,0 +1,10 @@
+<ng-template #timesSelector>
+    <div class="timepicker-times-selector">
+        <ul class="timepicker-time-list">
+            <li class="timepicker-time-list-item" *ngFor="let item of times" (mousedown)="selectTime(item)" [class.is-afternoon]="item.isAfternoon">{{item.text}}</li>
+        </ul>
+        <ul class="timepicker-time-list">
+            <li class="timepicker-time-list-item" *ngFor="let item of filterTimes" (mousedown)="selectTime(item)" [class.is-afternoon]="item.isAfternoon">{{item.text}}</li>
+        </ul>
+    </div>
+</ng-template>

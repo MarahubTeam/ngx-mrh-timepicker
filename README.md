@@ -1,3 +1,3 @@
 # NgxMrhTimepicker
 
-Angular timepicker based on ngbBootstrap.
+Angular timepicker.
