@@ -1,8 +1,6 @@
-import { DatePipe } from '@angular/common';
-import { Component, ElementRef, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
-import { EventEmitter } from 'stream';
 
 @Component({
     selector: 'm-timepicker',
