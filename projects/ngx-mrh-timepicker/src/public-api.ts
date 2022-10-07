@@ -4,3 +4,4 @@
 
 export * from './lib/timepicker.component';
 export * from './lib/timepicker.module';
+export * from './lib/timepicker';
