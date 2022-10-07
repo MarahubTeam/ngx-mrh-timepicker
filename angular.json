@@ -35,5 +35,8 @@
       }
     }
   },
-  "defaultProject": "ngx-mrh-timepicker"
+  "defaultProject": "ngx-mrh-timepicker",
+  "cli": {
+    "analytics": false
+  }
 }

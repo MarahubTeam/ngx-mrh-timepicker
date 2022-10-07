@@ -1,7 +1,8 @@
 import { DatePipe } from '@angular/common';
-import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { EventEmitter } from 'stream';
 
 @Component({
     selector: 'm-timepicker',
@@ -44,6 +45,8 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
     @Input() timeIntervals = 15;
     @Input() label = 'Time';
     @Input() disabled = false;
+
+    @Output() blur = new EventEmitter();
 
     value = '';
     viewValue = '';
@@ -128,6 +131,8 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
       if (this.isClickingOnTimeList) return;
       this.isClickingOnTimeList = false;
       this.updateValueFromTyping(event.target.value);
+      this.onTouched();
+      this.blur.emit(event);
     }
 
     onEnter(event: any) {
