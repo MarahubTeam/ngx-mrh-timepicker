@@ -140,8 +140,9 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
   scrollToValue(value: string) {
     this.ngZone.runOutsideAngular(() => {
       setTimeout(() => {
+        console.log(this.timesSelectorRef);
         if (!this.timesSelectorRef!.destroyed) {
-          const timeSelectElm = this.timesSelectorRef.rootNodes[0].querySelector('.time-list');
+          const timeSelectElm = this.timesSelectorRef.rootNodes[0].querySelector('.timepicker-time-list');
           if (timeSelectElm) {
             let [h, m] = value.split(':');
             let addHour = 0;
