@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  time = '16:30';
+  time1 = '16:30';
+  time2 = '6:30';
 }

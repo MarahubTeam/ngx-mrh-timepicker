@@ -177,11 +177,15 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
       }
     });
 
+    document.addEventListener('mousedown', this.onWindowClick);
+    document.addEventListener('touchstart', this.onWindowClick);
   }
 
   hideTimesSelector() {
     this.viewContainer.clear();
     this.timesSelectorRef.destroy();
+    document.removeEventListener('mousedown', this.onWindowClick);
+    document.removeEventListener('touchstart', this.onWindowClick);
   }
 
   @HostListener('focus')
@@ -207,9 +211,9 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
     this.filterTimes = this.times.filter(itme => itme.text.startsWith(value));
   }
 
-  @HostListener('document:touchstart', ['$event.target'])
-  @HostListener('document:mousedown', ['$event.target'])
-  onWindowClick(target: HTMLElement) {
+  onWindowClick = (event: MouseEvent | TouchEvent) => {
+    if (!event.target) return;
+    const target = event.target as HTMLElement;
     if (target.classList.contains('timepicker-time-list')) return;
     if (target.classList.contains('timepicker-time-list-item')) return;
     if (target !== this.el.nativeElement) {
