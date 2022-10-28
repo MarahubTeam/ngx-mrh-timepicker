@@ -1,14 +1,14 @@
-import { 
-  ViewChild, 
-  Component, 
-  forwardRef, 
-  Input, 
-  OnInit, 
-  HostListener, 
-  ElementRef, 
-  ViewContainerRef, 
-  TemplateRef, 
-  EmbeddedViewRef, 
+import {
+  ViewChild,
+  Component,
+  forwardRef,
+  Input,
+  OnInit,
+  HostListener,
+  ElementRef,
+  ViewContainerRef,
+  TemplateRef,
+  EmbeddedViewRef,
   NgZone } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { createPopper } from '@popperjs/core';
@@ -140,7 +140,6 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
   scrollToValue(value: string) {
     this.ngZone.runOutsideAngular(() => {
       setTimeout(() => {
-        console.log(this.timesSelectorRef);
         if (!this.timesSelectorRef!.destroyed) {
           const timeSelectElm = this.timesSelectorRef.rootNodes[0].querySelector('.timepicker-time-list');
           if (timeSelectElm) {
