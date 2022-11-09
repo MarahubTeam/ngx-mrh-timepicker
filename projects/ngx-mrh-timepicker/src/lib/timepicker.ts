@@ -39,6 +39,8 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
   onChange: any = () => { };
   onTouched: any = () => { };
 
+  isFocusingOnList = false;
+
   constructor(
     private el: ElementRef<HTMLInputElement>,
     private viewContainer: ViewContainerRef,
@@ -200,9 +202,11 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
 
   @HostListener('blur', ['$event.target.value'])
   onBlur(value: string) {
-    this.hideTimesSelector();
-    this.updateValueFromTyping(value);
-    this.onTouched();
+    if (!this.isFocusingOnList) {
+      this.hideTimesSelector();
+      this.updateValueFromTyping(value);
+      this.onTouched();
+    }
   }
 
   @HostListener('keyup', ['$event.target.value'])
@@ -212,10 +216,13 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   onWindowClick = (event: MouseEvent | TouchEvent) => {
+    this.isFocusingOnList = false;
     if (!event.target) return;
     const target = event.target as HTMLElement;
-    if (target.classList.contains('timepicker-time-list')) return;
-    if (target.classList.contains('timepicker-time-list-item')) return;
+    if (target.classList.contains('timepicker-time-list') || target.classList.contains('timepicker-time-list-item')) {
+      this.isFocusingOnList = true;
+      return;
+    }
     if (target !== this.el.nativeElement) {
       this.hideTimesSelector();
     }
